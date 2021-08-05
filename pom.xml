@@ -12,7 +12,7 @@
 
 	<groupId>ru.geekbrains.webapp</groupId>
 	<artifactId>spring-web-app</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>spring-web-app</name>
 	<description>Demo project for Spring Boot</description>
 
