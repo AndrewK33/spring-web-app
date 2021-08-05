@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.webapp.springwebapp.model.Product;
-import ru.geekbrains.webapp.springwebapp.sevices.ProductService;
+import ru.geekbrains.webapp.springwebapp.services.ProductService;
 
 @Controller
 public class ProductController {
@@ -14,7 +14,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/show_all")
+    @RequestMapping("/show_all")
     public String showProductsPage(Model model) {
         model.addAttribute("products", productService.findAll());
         return "products";
@@ -26,6 +26,18 @@ public class ProductController {
         return "product_info";
     }
 
+
+    @PostMapping("/minusCost/")
+    public String minusProductCost(@RequestParam Long productId) {
+        productService.minusCost(productId);
+        return "redirect:/show_all";
+    }
+
+    @PostMapping("/plusCost/")
+    public String plusProductCost(@RequestParam Long productId) {
+        productService.plusCost(productId);
+        return "redirect:/show_all";
+    }
 
 
     @GetMapping("/create")

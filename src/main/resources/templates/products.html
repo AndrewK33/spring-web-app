@@ -9,29 +9,42 @@
 </head>
 <body>
 <div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Score</td>
-            <td></td>
-        </tr>
-        </thead>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Cost</td>
+                <td></td>
+                <td></td>
+                <td></td>
 
-        <tbody>
-        <tr th:each="p : ${products}">
-            <td th:text="${p.id}"></td>
-            <td th:text="${p.name}"></td>
-            <td th:text="${p.cost}"></td>
-            <td>
-                <a th:href="@{'/show/' + ${p.id}}" class="btn btn-primary">Инфо</a>
-            </td>
-        </tr>
-        </tbody>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="p : ${products}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.cost}"></td>
+                <td>
+                    <form th:action="@{/minusCost/}" method="post">
+                        <button th:value="${p.id}" name="productId" class="btn btn-primary">-</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/plusCost/}" method="post">
+                        <button th:value="${p.id}" name="productId" class="btn btn-primary">+</button>
+                    </form>
+                </td>
+                <td>
+                    <a th:href="@{'/show/' + ${p.id}}" class="btn btn-primary">Инфо</a>
+                </td>
+            </tr>
+            </tbody>
 
 
-    </table>
+        </table>
     <span th:text="${'Всего продуктов: ' + products.size()}"/>
     <p></p>
     <a th:href="@{'/'}" class="btn btn-primary">На главную</a>
