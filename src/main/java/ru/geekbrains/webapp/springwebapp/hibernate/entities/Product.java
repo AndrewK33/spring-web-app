@@ -1,11 +1,12 @@
-package ru.geekbrains.webapp.springwebapp.hibernate;
+package ru.geekbrains.webapp.springwebapp.hibernate.entities;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 @Entity
 @Table (name = "products")
 public class Product {
+
     @Id
     @Column (name = "id")
     private int id;
@@ -16,7 +17,8 @@ public class Product {
     @Column (name = "price")
     private int price;
 
-
+    @ManyToMany(targetEntity = Customer.class)
+    private List<Customer> customers;
 
     public Product() {
     }
