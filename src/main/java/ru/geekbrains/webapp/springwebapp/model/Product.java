@@ -1,6 +1,5 @@
 package ru.geekbrains.webapp.springwebapp.model;
 
-import org.springframework.lang.NonNull;
 
 public class Product {
     private Long id;
